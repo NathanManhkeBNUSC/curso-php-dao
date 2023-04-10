@@ -72,15 +72,42 @@ class Usuario{
     }
 
 
-    public static function search($usuario){
+    public static function search($login){
 
         $sql = new Sql();
 
         $return = $sql->select("SELECT * FROM tb_usuarios WHERE usuario LIKE :SEARCH ORDER BY usuario", array(
 
-            ':SEARCH'=>"%.$usuario.%"
+            ':SEARCH'=>"%.$login.%"
 
         ));
+
+    }
+
+    public function login($usuario, $password){
+
+        $sql = new Sql();
+
+        $result = $sql->select("SELECT * FROM tb_usuarios WHERE usuario = :USUARIO AND  senha = :PASSWORD", array(
+            ":USUARIO"=>$usuario,
+            ":PASSWORD"=>$password
+        ));
+
+        //Isset significa para verificar se algo exite
+        if (isset($result[0])) {
+
+            $row = $result[0];
+
+            $this->setId($row['id']);
+            $this->setNome($row['nome']);
+            $this->setUsuario($row['usuario']);
+            $this->setSenha($row['senha']);
+
+        } else {
+
+            throw new Exception("Login e/ou Senha invalidos");
+
+        }
 
     }
 

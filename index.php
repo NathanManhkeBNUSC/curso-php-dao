@@ -20,9 +20,15 @@
 
 
 //Carrega uma lista dde usuarios buscando pelo login
-$search = Usuario::search("Na");
+// $search = Usuario::search("Na");
 
-echo json_encode($search);
+// echo json_encode($search);
 
+//Carrega um usuario usando o login e a senha 
+
+$usuario = new Usuario();
+$usuario->login("Teste","S@nta799");
+
+echo $usuario;
 
 ?>
