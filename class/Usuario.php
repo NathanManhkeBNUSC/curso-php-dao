@@ -49,14 +49,7 @@ class Usuario{
 
         //Isset significa para verificar se algo exite
         if (isset($result[0])) {
-
-            $row = $result[0];
-
-            $this->setId($row['id']);
-            $this->setNome($row['nome']);
-            $this->setUsuario($row['usuario']);
-            $this->setSenha($row['senha']);
-
+            $this->setData($result[0]);            
         }
 
     }
@@ -96,17 +89,37 @@ class Usuario{
         //Isset significa para verificar se algo exite
         if (isset($result[0])) {
 
-            $row = $result[0];
-
-            $this->setId($row['id']);
-            $this->setNome($row['nome']);
-            $this->setUsuario($row['usuario']);
-            $this->setSenha($row['senha']);
-
+            $this->setData($result[0]);
+           
         } else {
 
             throw new Exception("Login e/ou Senha invalidos");
 
+        }
+
+    }
+
+    public function setData($data){
+
+        $this->setId($data['id']);
+        $this->setNome($data['nome']);
+        $this->setUsuario($data['usuario']);
+        $this->setSenha($data['senha']);
+
+    }
+
+    public function insert(){
+
+        $sql = new Sql();
+
+        $result = $sql->select("CALL sp_usuarios_insert(:NOME, :USUARIO, :SENHA)", array(
+            ':NOME'=>$this->getNome(),
+            ':USUARIO'=>$this->getUsuario(),
+            ':SENHA'=>$this->getSenha()
+        ));
+
+        if (count($result) > 0) {
+            $this->setData($result[0]);
         }
 
     }
