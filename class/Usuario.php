@@ -61,6 +61,29 @@ class Usuario{
 
     }
 
+    //Static posso chamar ele direto sem estanciar o objeto
+    public static function getList(){
+
+        $sql = new Sql();
+        
+        $return = $sql->select("SELECT * FROM tb_usuarios ORDER BY usuario;");
+        
+
+    }
+
+
+    public static function search($usuario){
+
+        $sql = new Sql();
+
+        $return = $sql->select("SELECT * FROM tb_usuarios WHERE usuario LIKE :SEARCH ORDER BY usuario", array(
+
+            ':SEARCH'=>"%.$usuario.%"
+
+        ));
+
+    }
+
     public function __toString(){
         return json_encode(array(
             "id"=>$this->getId(),

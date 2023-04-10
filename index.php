@@ -8,11 +8,21 @@
 
 // echo json_encode($usuarios);
 
-$root = new Usuario();
+//Carrega um usuario
+// $root = new Usuario();
+// $root->loadById(3);
+// echo $root;
 
-$root->loadById(3);
+// //Carrega uma lista de usuario
+// $lista = Usuario::getList();
 
-echo $root;
+// echo json_encode($lista);
+
+
+//Carrega uma lista dde usuarios buscando pelo login
+$search = Usuario::search("Na");
+
+echo json_encode($search);
 
 
 ?>
