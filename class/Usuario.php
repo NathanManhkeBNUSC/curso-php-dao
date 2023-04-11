@@ -124,6 +124,18 @@ class Usuario{
 
     }
 
+    //aqui irei fazer um metodo construtor para não chamar asssim no index
+    // $aluno->setNome("Aluno");
+    // $aluno->setUsuario("aluno");
+    // $aluno->setSenha("Teste");
+
+    public function __construct($nome = "", $usuario = "", $senha = ""){
+
+        $this->setNome($nome);
+        $this->setUsuario($usuario);
+        $this->setSenha($senha);
+    }
+
     public function __toString(){
         return json_encode(array(
             "id"=>$this->getId(),
