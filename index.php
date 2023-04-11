@@ -33,14 +33,24 @@
 
 //Insert de um usuario novo
 
-$aluno = new Usuario("Aluno1", "Aluno2", "S121212");
+// $aluno = new Usuario("Aluno1", "Aluno2", "S121212");
 
 // $aluno->setNome("Aluno");
 // $aluno->setUsuario("aluno");
 // $aluno->setSenha("Teste");
 
-$aluno->insert();
+// $aluno->insert();
 
-echo $aluno;
+// echo $aluno;
+
+//Update do usuario 
+
+$usuario = new Usuario();
+
+$usuario->loadById(6);
+
+$usuario->update("Professor", "Professor", "Testes123");
+
+echo $usuario;
 
 ?>

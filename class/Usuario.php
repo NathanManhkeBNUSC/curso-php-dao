@@ -124,6 +124,23 @@ class Usuario{
 
     }
 
+    public function update($nome, $usuario, $senha){
+
+        $this->setNome($nome);
+        $this->setUsuario($usuario);
+        $this->setSenha($senha);
+
+        $sql = new Sql();
+
+        $sql->Queryphp("UPDATE tb_usuarios SET nome = :NOME, usuario = :USUARIO, senha = :SENHA WHERE id = :ID", array(
+            ':NOME'=>$this->getNome(),
+            ':USUARIO'=>$this->getUsuario(),
+            ':SENHA'=>$this->getSenha(),
+            ':ID'=>$this->getId()
+        ));
+
+    }
+
     //aqui irei fazer um metodo construtor para não chamar asssim no index
     // $aluno->setNome("Aluno");
     // $aluno->setUsuario("aluno");
