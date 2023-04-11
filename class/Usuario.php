@@ -141,6 +141,21 @@ class Usuario{
 
     }
 
+    public function delete(){
+
+        $sql = new Sql();
+        
+        $sql->Queryphp("DELETE FROM tb_usuarios WHERE id = :ID",array(
+            ':ID'=>$this->getId()
+        ));
+
+        $this->setId(0);
+        $this->setNome("");
+        $this->setUsuario("");
+        $this->setSenha("");
+
+    }
+
     //aqui irei fazer um metodo construtor para não chamar asssim no index
     // $aluno->setNome("Aluno");
     // $aluno->setUsuario("aluno");

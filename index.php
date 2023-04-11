@@ -45,11 +45,19 @@
 
 //Update do usuario 
 
+// $usuario = new Usuario();
+
+// $usuario->loadById(6);
+
+// $usuario->update("Professor", "Professor", "Testes123");
+
+// echo $usuario;
+
 $usuario = new Usuario();
 
 $usuario->loadById(6);
 
-$usuario->update("Professor", "Professor", "Testes123");
+$usuario->delete();
 
 echo $usuario;
 
